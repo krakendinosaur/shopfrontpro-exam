@@ -2,10 +2,10 @@
 
 namespace Helpers;
 
-class Sanitize
+class Validate
 {
     public static function int($var)
     {
-        return filter_var($var, FILTER_SANITIZE_NUMBER_INT);
+        return filter_var($var, FILTER_VALIDATE_INT);
     }
 }

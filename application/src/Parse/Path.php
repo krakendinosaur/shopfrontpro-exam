@@ -95,11 +95,11 @@ class Path
     {
         try {
             if (empty($depth)) {
-                throw new \Exception('Error: Depth does not accept null or zero values.');
+                throw new \Exception('Error: depth does not accept null or zero values.');
             }
 
             if (empty($leafs)) {
-                throw new \Exception('Error: Leafs does not accept null or zero values.');
+                throw new \Exception('Error: leafs does not accept null or zero values.');
             }
 
             $space = self::WEB_SPACE;
