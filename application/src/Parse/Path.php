@@ -6,7 +6,7 @@ use Helpers\Input;
 
 class Path
 {
-    const DEFAULT_INDENTION_SPACES = 4;
+    const DEFAULT_COUNT_INDENTION_SPACES = 4;
 
     const WEB_SPACE = '&nbsp;';
 
@@ -113,9 +113,14 @@ class Path
             $display = '';
 
             $currentCount++;
+            $leafCount = 0;
 
             foreach ($parsedPaths as $key => $value) {
-                $spacesCount = ($currentCount - 1) * self::DEFAULT_INDENTION_SPACES;
+                $spacesCount = ($currentCount - 1) * self::DEFAULT_COUNT_INDENTION_SPACES;
+
+                if ($leafCount >= $leafs) {
+                    continue;
+                }
 
                 if (is_array($value)) {
                     $display .= str_repeat($space, $spacesCount) . $key . $newline;
@@ -128,6 +133,8 @@ class Path
                 } else {
                     $display .= str_repeat($space, $spacesCount) . $value . $newline;
                 }
+
+                $leafCount++;
             }
 
             return $display;

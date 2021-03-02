@@ -12,4 +12,4 @@ $paths = array(
 );
 
 $parsedPaths = Path::toArray($paths);
-echo Path::createTree($parsedPaths, 4, 3);
+echo Path::createTree($parsedPaths, 6, 3);
