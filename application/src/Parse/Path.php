@@ -3,6 +3,7 @@
 namespace Parse;
 
 use Helpers\Input;
+use Helpers\StringLib;
 
 class Path
 {
@@ -15,6 +16,8 @@ class Path
     const CLI_SPACE = ' ';
 
     const CLI_NEWLINE = "\n";
+
+    const DEFAULT_LENGTH_FILENAME = 8;
 
     public static function toArray(array $paths)
     {
@@ -138,6 +141,51 @@ class Path
             }
 
             return $display;
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public static function createRandom(string $basePath, int $paths, int $depth, int $files)
+    {
+        try {
+            if (empty($basePath)) {
+                throw new \Exception('Error: basePath cannot be empty.');
+            }
+
+            if (empty($paths)) {
+                throw new \Exception('Error: paths does not accept null or zero values.');
+            }
+
+            if (empty($depth)) {
+                throw new \Exception('Error: depth does not accept null or zero values.');
+            }
+
+            if (empty($files)) {
+                throw new \Exception('Error: files does not accept null or zero values.');
+            }
+
+            $randomPaths = array();
+
+            for ($i = 0; $i < $paths; $i++) {
+                $randomDepth = rand(1, $depth);
+
+                $tmpPath = '';
+
+                for ($j = 0; $j < $randomDepth; $j++) {
+                    $folderNum = $j + 1;
+                    $tmpPath .= 'folder' . $folderNum . '/';
+                }
+
+                $tmpPath .= StringLib::random(self::DEFAULT_LENGTH_FILENAME) . '.txt';
+
+                array_push(
+                    $randomPaths,
+                    $basePath . $tmpPath
+                );
+            }
+
+            return $randomPaths;
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
