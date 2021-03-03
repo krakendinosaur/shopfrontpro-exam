@@ -89,7 +89,7 @@ Visit: http://localhost/shopfrontpro-exam/tree.php?depth=6&leafs=3
 
 ### Running via Browser / Web
 
-Visit: http://localhost/shopfrontpro-exam/random.php?base-path=/home/user&paths=10&depth=6&files=3
+Visit: http://localhost/shopfrontpro-exam/random.php?base-path=/home/user/&paths=10&depth=6&files=3
 
 #### Sample Output
 
